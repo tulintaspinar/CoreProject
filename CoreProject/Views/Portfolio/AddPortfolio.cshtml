@@ -1,0 +1,64 @@
+﻿@model Portfolio
+@{
+    ViewData["Title"] = "AddPortfolio";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="card-header border-0">
+    <h3 class="mb-0">PROJE EKLE</h3>
+</div>
+<div>
+    <br />
+    <form method="post">
+        <label>PROJE ADI</label>
+        <input type="text" asp-for="Name" class="form-control"/>     
+        @Html.ValidationMessageFor(x=>x.Name,"",new{@class="text-danger"})
+        <br />
+
+        <label>Proje Resmi</label>
+        <input type="file" asp-for="ImageUrl" class="form-control"/>
+        @Html.ValidationMessageFor(x=>x.ImageUrl,"",new{@class="text-danger"})
+        <br />
+
+        <label>Proje Resmi 2</label>
+        <input type="file" asp-for="ImageUrl2" class="form-control"/>
+        @Html.ValidationMessageFor(x=>x.ImageUrl2,"",new{@class="text-danger"})
+        <br />
+
+        <label>URL</label>
+        <input type="text" asp-for="ProjectUrl" class="form-control"/>
+        <br />
+
+        <label>Resim 1</label>
+        <input type="file" asp-for="Image1" class="form-control" />
+        <br />
+
+        <label>Resim 2</label>
+        <input type="file" asp-for="Image2" class="form-control" />
+        <br />
+
+        <label>Resim 3</label>
+        <input type="file" asp-for="Image3" class="form-control" />
+        <br />
+
+        <label>Resim 4</label>
+        <input type="file" asp-for="Image4" class="form-control" />
+        <br />
+
+        <label>Platform</label>
+        <input type="text" asp-for="Platform" class="form-control" />
+        <br />
+        <label>Ücret</label>
+        <input type="text" asp-for="Price" class="form-control" />
+        @Html.ValidationMessageFor(x=>x.Price,"",new{@class="text-danger"})
+        <br />
+        <label>Durum</label>
+        <input type="text" asp-for="Status" class="form-control" />
+        <br />
+        <label>Tamamlanma Oranı</label>
+        <input type="text" asp-for="Value" class="form-control" />
+        @Html.ValidationMessageFor(x=>x.Value,"",new{@class="text-danger"})
+        <br />
+        <button type="submit" class="btn btn-success">KAYDET</button>
+    </form>
+</div>

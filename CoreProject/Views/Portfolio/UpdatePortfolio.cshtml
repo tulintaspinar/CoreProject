@@ -1,0 +1,71 @@
+﻿@model Portfolio
+@{
+    ViewData["Title"] = "UpdatePortfolio";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<div class="card-header border-0">
+    <h3 class="mb-0">PROJE GÜNCELLE</h3>
+</div>
+<div>
+    <br />
+    @using (Html.BeginForm("UpdatePortfolio", "Portfolio", FormMethod.Post))
+    {
+        @Html.HiddenFor(x=>x.PortfolioID)
+
+        <label>PROJE ADI</label>
+        @Html.TextBoxFor(x=>x.Name,new{@class="form-control"})
+        @Html.ValidationMessageFor(x=>x.Name,"",new{@class="text-danger"})
+        <br />
+
+        <label>Proje Resmi</label>
+        @Html.TextBoxFor(x=>x.ImageUrl,new{@class="form-control"})
+        @Html.ValidationMessageFor(x=>x.ImageUrl,"",new{@class="text-danger"})
+        <br />
+
+        <label>Proje Resmi 2</label>
+        @Html.TextBoxFor(x=>x.ImageUrl2,new{@class="form-control",@type="file"})
+        @Html.ValidationMessageFor(x=>x.ImageUrl2,"",new{@class="text-danger"})
+        <br />
+
+        <label>URL</label>
+        @Html.TextBoxFor(x=>x.ProjectUrl,new{@class="form-control"})
+        <br />
+
+        <label>Resim 1</label>
+        @Html.TextBoxFor(x=>x.Image1,new{@class="form-control"})
+        <br />
+
+        <label>Resim 2</label>
+        @Html.TextBoxFor(x=>x.Image2,new{@class="form-control"})
+        <br />
+
+        <label>Resim 3</label>
+        @Html.TextBoxFor(x=>x.Image3,new{@class="form-control"})
+        <br />
+
+        <label>Resim 4</label>
+        @Html.TextBoxFor(x=>x.Image4,new{@class="form-control"})
+        <br />
+
+        <label>Platform</label>
+        @Html.TextBoxFor(x=>x.Platform,new{@class="form-control"})
+        <br />
+
+        <label>Ücret</label>
+        @Html.TextBoxFor(x=>x.Price,new{@class="form-control"})
+        @Html.ValidationMessageFor(x=>x.Price,"",new{@class="text-danger"})
+        <br />
+
+        <label>Durum</label>
+        @Html.TextBoxFor(x=>x.Status,new{@class="form-control"})
+        <br />
+
+        <label>Tamamlanma Oranı</label>
+        @Html.TextBoxFor(x=>x.Value,new{@class="form-control"})
+        @Html.ValidationMessageFor(x=>x.Value,"",new{@class="text-danger"})
+        <br />
+
+        <button class="btn btn-success">GÜNCELLE</button>
+    }
+</div>
+

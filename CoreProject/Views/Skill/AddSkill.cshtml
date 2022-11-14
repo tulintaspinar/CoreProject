@@ -1,0 +1,22 @@
+﻿@model Skill
+@{
+    ViewData["Title"] = "AddSkill";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="card-header border-0">
+    <h3 class="mb-0">Yetenek Ekle</h3>
+</div>
+<div>
+    <form class="form-control" method="post">
+        @Html.Label("Yetenek Başlığı")
+        <input type="text" asp-for="Title" class="form-control" />
+        <br />
+        <label>Oran</label>
+        <input type="text" asp-for="Value" class="form-control" />
+        <br />
+        <button type="submit" class="btn btn-primary">KAYDET</button>
+    </form>
+</div>
+
+

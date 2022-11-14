@@ -6,7 +6,7 @@ using System;
 
 namespace CoreProject.Controllers
 {
-    public class DefaultController : Controller
+    public class HomeController : Controller
     {
         public IActionResult Index()
         {

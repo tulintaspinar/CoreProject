@@ -1,0 +1,40 @@
+﻿@model List<Experience>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<div class="card-header border-0">
+    <h3 class="mb-0">DENEYİMLER</h3>
+</div>
+<div class="table-responsive">
+    <table class="table align-items-center table-flush">
+        <thead class="thead-light">
+            <tr>
+                <th scope="col" class="sort" data-sort="#">#</th>
+                <th scope="col" class="sort" data-sort="Name">ADI</th>
+                <th scope="col" class="sort" data-sort="Date">TARİH</th>
+                <th scope="col" class="sort" data-sort="Description">AÇIKLAMA</th>
+                <th scope="col">SİL</th>
+                <th scope="col" class="sort">DÜZENLE</th>
+                <th scope="col"></th>
+            </tr>
+        </thead>
+        <tbody class="list">
+            @foreach (var item in Model)
+            {
+
+                <tr>
+                    <th>@item.ExperinceID</th>
+                    <td class="budget">@item.Name</td>
+                    <td> @item.Date</td>
+                    <td>@item.Description.Substring(0,5) ...</td>
+                    <td><a href="/Experience/DeleteExperience/@item.ExperinceID" class="btn btn-danger">SİL</a></td>
+                    <td><a href="/Experience/UpdateExperience/@item.ExperinceID" class="btn btn-success">DÜZENLE</a></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <br />
+    <a href="/Experience/AddExperience" class="btn btn-primary">YENİ DENEYİM EKLE</a>
+</div>
+

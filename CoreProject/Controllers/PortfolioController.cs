@@ -7,68 +7,68 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace CoreProject.Controllers
 {
-    public class FeatureController : Controller
+    public class PortfolioController : Controller
     {
-        FeatureManager _featureManager = new FeatureManager(new EfFeatureDal());
+        PortfolioManager _portfolioManager = new PortfolioManager(new EfPortfolioDal());
         public IActionResult Index()
         {
-            ViewBag.d1 = "Hakkımda";
-            ViewBag.d2 = "Hakkımda";
+            ViewBag.d1 = "Proje";
+            ViewBag.d2 = "Projeler";
             ViewBag.d3 = "Tümü";
-            var values = _featureManager.GetList();
+            var values = _portfolioManager.GetList();
             return View(values);
         }
         [HttpGet]
-        public IActionResult AddFeature()
+        public IActionResult AddPortfolio()
         {
-            ViewBag.d1 = "Hakkımda";
-            ViewBag.d2 = "Hakkımda";
+            ViewBag.d1 = "Proje";
+            ViewBag.d2 = "Projeler";
             ViewBag.d3 = "Ekle";
             return View();
         }
         [HttpPost]
-        public IActionResult AddFeature(Feature feature)
+        public IActionResult AddPortfolio(Portfolio portfolio)
         {
-            FeatureValidator validations = new FeatureValidator();
-            ValidationResult validationResult = validations.Validate(feature);
+            PortfolioValidator validations = new PortfolioValidator();
+            ValidationResult validationResult = validations.Validate(portfolio);
             if (validationResult.IsValid)
             {
-                _featureManager.Add(feature);
+                _portfolioManager.Add(portfolio);
                 return RedirectToAction("Index");
             }
             else
             {
                 foreach (var item in validationResult.Errors)
                 {
-                    ModelState.AddModelError(item.PropertyName, item.ErrorMessage);
-
+                    ModelState.AddModelError(item.PropertyName,item.ErrorMessage);
+                    
                 }
                 return View();
             }
         }
-        public IActionResult DeleteFeature(int id)
+        public IActionResult DeletePortfolio(int id)
         {
-            var feature = _featureManager.GetById(id);
-            _featureManager.Delete(feature);
+            var portfolio = _portfolioManager.GetById(id);
+            _portfolioManager.Delete(portfolio);
             return RedirectToAction("Index");
         }
         [HttpGet]
-        public IActionResult UpdateFeature(int id)
+        public IActionResult UpdatePortfolio(int id)
         {
-            ViewBag.d1 = "Hakkımda";
-            ViewBag.d2 = "Hakkımda";
+            ViewBag.d1 = "Proje";
+            ViewBag.d2 = "Projeler";
             ViewBag.d3 = "Güncelle";
-            var portfolio = _featureManager.GetById(id);
+            var portfolio = _portfolioManager.GetById(id);
             return View(portfolio);
         }
         [HttpPost]
-        public IActionResult UpdateFeature(Feature feature)
+        public IActionResult UpdatePortfolio(Portfolio portfolio)
         {
-            FeatureValidator validations = new FeatureValidator();
-            ValidationResult validationResult = validations.Validate(feature);
+            PortfolioValidator validations = new PortfolioValidator();
+            ValidationResult validationResult = validations.Validate(portfolio);
             if (validationResult.IsValid)
             {
-                _featureManager.Update(feature);
+                _portfolioManager.Update(portfolio);
                 return RedirectToAction("Index");
             }
             else

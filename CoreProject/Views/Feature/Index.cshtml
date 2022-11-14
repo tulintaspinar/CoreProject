@@ -1,8 +1,42 @@
-﻿
+﻿@model List<Feature>
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    int count = 0;
 }
 
-<h1>BURASI CONTENT</h1>
+<div class="card-header border-0">
+    <h3 class="mb-0">DENEYİMLER</h3>
+</div>
+<div class="table-responsive">
+    <table class="table align-items-center table-flush">
+        <thead class="thead-light">
+            <tr>
+                <th scope="col" class="sort" data-sort="#">#</th>
+                <th scope="col" class="sort" data-sort="Name">BAŞLIK</th>
+                <th scope="col" class="sort" data-sort="Date">AD SOYAD</th>
+                <th scope="col" class="sort" data-sort="Description">UNVAN</th>
+                <th scope="col">SİL</th>
+                <th scope="col" class="sort">DÜZENLE</th>
+                <th scope="col"></th>
+            </tr>
+        </thead>
+        <tbody class="list">
+            @foreach (var item in Model)
+            {
+                count++;
+                <tr>
+                    <th>@count</th>
+                    <td class="budget">@item.Header</td>
+                    <td> @item.Name</td>
+                    <td>@item.Title</td>
+                    <td><a href="/Feature/DeleteFeature/@item.FeatureID" class="btn btn-danger">SİL</a></td>
+                    <td><a href="/Feature/UpdateFeature/@item.FeatureID" class="btn btn-success">DÜZENLE</a></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <br />
+    <a href="/Feature/AddFeature" class="btn btn-primary">YENİ DENEYİM EKLE</a>
+</div>
 
