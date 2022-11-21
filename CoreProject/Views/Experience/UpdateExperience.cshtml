@@ -1,23 +1,27 @@
 ﻿@model Experience
 @{
     ViewData["Title"] = "UpdateExperience";
-    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    Layout = "~/Views/Shared/_NewAdminLayout.cshtml";
 }
-<div class="card-header border-0">
-    <h3 class="mb-0">Deneyim Güncelle</h3>
-</div>
-<div>
-    <form class="form-control" method="post">
-        <input type="hidden" asp-for="ExperinceID" />
-        @Html.Label("Deneyim Adı")
-        <input type="text" asp-for="Name" class="form-control" />
-        <br />
-        @Html.Label("Deneyim Tarihi")
-        <input type="text" asp-for="Date" class="form-control" />
-        <br />
-        @Html.Label("Deneyim Açıklaması")
-        <textarea asp-for="Description" class="form-control"></textarea>
-        <br />
-        <button type="submit" class="btn btn-success">KAYDET</button>
-    </form>
+<div class="col-12 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">YENİ DENEYİM EKLEME PANELİ</h4>
+            <form class="forms-sample" method="post">
+                <div class="form-group">
+                    <label>DENEYİM ADI</label>
+                    <input type="text" class="form-control" asp-for="Name">
+                </div>
+                <div class="form-group">
+                    <label>DENEYİM TARİHİ</label>
+                    <input type="text" class="form-control" asp-for="Date">
+                </div>
+                <div class="form-group">
+                    <label>DENEYİM AÇIKLAMASI</label>
+                    <textarea class="form-control" asp-for="Description" rows="4"></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary mr-2">KAYDET</button>
+            </form>
+        </div>
+    </div>
 </div>

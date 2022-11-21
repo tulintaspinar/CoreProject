@@ -1,22 +1,25 @@
 ﻿@model Skill
 @{
     ViewData["Title"] = "AddSkill";
-    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    Layout = "~/Views/Shared/_NewAdminLayout.cshtml";
 }
+<div class="col-12 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">YENİ YETENEK EKLEME PANELİ</h4>
+            <form class="forms-sample" method="post">
+                <div class="form-group">
+                    <label>Yetenek Başlığı</label>
+                    <input type="text" asp-for="Title" class="form-control" />
+                </div>
+                <div class="form-gr oup">
+                    <label>Oran</label>
+                    <input type="text" asp-for="Value" class="form-control" />
+                </div>
 
-<div class="card-header border-0">
-    <h3 class="mb-0">Yetenek Ekle</h3>
+                <button type="submit" class="btn btn-outline-primary mr-2">GÜNCELLE</button>
+            </form>
+        </div>
+    </div>
 </div>
-<div>
-    <form class="form-control" method="post">
-        @Html.Label("Yetenek Başlığı")
-        <input type="text" asp-for="Title" class="form-control" />
-        <br />
-        <label>Oran</label>
-        <input type="text" asp-for="Value" class="form-control" />
-        <br />
-        <button type="submit" class="btn btn-primary">KAYDET</button>
-    </form>
-</div>
-
 
