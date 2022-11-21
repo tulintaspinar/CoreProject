@@ -8,6 +8,10 @@ namespace CoreProject.Controllers
         {
             return PartialView();
         }
+        public PartialViewResult NewPartialSideBar()
+        {
+            return PartialView();
+        }
         public PartialViewResult PartialFooter()
         {
             return PartialView();
