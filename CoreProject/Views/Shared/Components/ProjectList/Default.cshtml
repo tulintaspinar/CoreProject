@@ -1,0 +1,50 @@
+﻿@model List<Portfolio> 
+@{
+    int sayac = 0;
+}
+<div class="row ">
+              <div class="col-12 grid-margin">
+                <div class="card">
+                  <div class="card-body">
+                    <h4 class="card-title">Order Status</h4>
+                    <div class="table-responsive">
+                      <table class="table">
+                        <thead>
+                          <tr>
+                            <th>#</th>
+                            <th> PROJE ADI </th>
+                            <th> URL </th>
+                            <th> PLATFORM </th>
+                            <th> FİYAT </th>
+                            <th> TAMAMLANMA ORANI </th>
+                            <th> DURUM </th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                           {
+                                sayac++;
+                                <tr>
+                                    <td>@sayac</td>
+                                    <td>
+                                        <span class="pl-2">@item.Name</span>
+                                    </td>
+                                    <td> @item.ProjectUrl </td>
+                                    <td> @item.Platform </td>
+                                    <td> @item.Price </td>
+                                    <td> %@item.Value</td>
+                                    @if(@item.Value == 100){
+                                        <td> <div class="badge badge-outline-success">TAMAMLANDI</div></td>
+                                    }
+                                   else{
+                                        <td> <div class="badge badge-outline-danger">DEVAM EDİYOR</div></td>
+                                   }
+                                </tr>
+                            }
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
