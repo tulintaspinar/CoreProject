@@ -1,18 +1,41 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using CoreProject.Areas.Writer.Models;
+using CoreProject.EntityLayer.Concrete;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
+using System.Threading.Tasks;
 
 namespace CoreProject.Areas.Writer.Controllers
 {
     [Area("Writer")]
     public class LoginController : Controller
     {
+        private readonly SignInManager<AppUser> _signInManager;
+
+        public LoginController(SignInManager<AppUser> signInManager)
+        {
+            _signInManager = signInManager;
+        }
+
         [HttpGet]
         public IActionResult Index()
         {
             return View();
         }
         [HttpPost]
-        public IActionResult Index(int a)
+        public async Task<IActionResult> Index(UserLoginViewModel userLogin)
         {
+            if (ModelState.IsValid)
+            {
+                var result = await _signInManager.PasswordSignInAsync(userLogin.UserName, userLogin.Password, true, true); //ilk true cookie hatırlama ikinci true asp.net userda logout countu sayma
+                if (result.Succeeded)
+                {
+                    return RedirectToAction("Index", "Home");
+                }
+                else
+                {
+                    ModelState.AddModelError("", "Hatalı kullanıcı adı veya şifre!");
+                }
+            }
             return View();
         }
     }
