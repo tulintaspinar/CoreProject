@@ -1,0 +1,18 @@
+﻿@model Announcement
+@{
+    ViewData["Title"] = "AnnouncementDetails";
+    Layout = "~/Views/Shared/_WriterLayout.cshtml";
+}
+
+<h1>@Model.Title.ToUpper() DUYURUSU DETAYI</h1>
+
+
+<input type="hidden" asp-for="ID" />
+<br />
+<input type="text" asp-for="Date" class="form-control"/>
+<br />
+<input type="text" asp-for="Title" class="form-control" />
+<br />
+<input type="text" asp-for="Status" class="form-control" />
+<br />
+<textarea type="text" asp-for="Content" class="form-control"></textarea>
