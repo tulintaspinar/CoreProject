@@ -1,0 +1,42 @@
+﻿@model UserEditViewModel
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_WriterLayout.cshtml";
+}
+<div class="col-12 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">PROFİLİM</h4>
+            <form class="forms-sample" method="post" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label for="exampleInputName1">ADINIZ</label>
+                    <input type="text" class="form-control" asp-for="Name" id="exampleInputName1" placeholder="AD">
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputName1">SOYADINIZ</label>
+                    <input type="text" class="form-control" asp-for="Surname" id="exampleInputName1" placeholder="SOYAD">
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword4">ŞİFRE</label>
+                    <input type="password" class="form-control"  id="exampleInputPassword4" placeholder="ŞİFRE">
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword4">ŞİFRE TEKRAR</label>
+                    <input type="password" class="form-control" id="exampleInputPassword4" placeholder="ŞİFRE TEKRAR">
+                </div>
+                <div class="form-group">
+                    <label>RESİM YÜKLE</label>
+                    <input type="file"  asp-for="Image">
+@*                    <div class="input-group col-xs-12">
+                        <input type="text" class="form-control file-upload-info" disabled placeholder="RESİM SEÇ">
+                        <span class="input-group-append">
+                            <button class="file-upload-browse btn btn-primary" type="button">SEÇ</button>
+                        </span>
+                    </div>*@
+                </div>
+                <button type="submit" class="btn btn-primary mr-2">KAYDET</button>
+                <button class="btn btn-light">İPTAL</button>
+            </form>
+        </div>
+    </div>
+</div>

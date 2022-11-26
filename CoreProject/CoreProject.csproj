@@ -37,6 +37,7 @@
   <ItemGroup>
     <Folder Include="Areas\Writer\Data\" />
     <Folder Include="wwwroot\IMAGE\" />
+    <Folder Include="wwwroot\UserImage\" />
   </ItemGroup>
 
 </Project>
