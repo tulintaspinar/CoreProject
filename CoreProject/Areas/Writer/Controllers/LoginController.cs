@@ -1,5 +1,6 @@
 ﻿using CoreProject.Areas.Writer.Models;
 using CoreProject.EntityLayer.Concrete;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
@@ -7,6 +8,7 @@ using System.Threading.Tasks;
 namespace CoreProject.Areas.Writer.Controllers
 {
     [Area("Writer")]
+    [AllowAnonymous]
     public class LoginController : Controller
     {
         private readonly SignInManager<AppUser> _signInManager;
@@ -29,7 +31,7 @@ namespace CoreProject.Areas.Writer.Controllers
                 var result = await _signInManager.PasswordSignInAsync(userLogin.UserName, userLogin.Password, true, true); //ilk true cookie hatırlama ikinci true asp.net userda logout countu sayma
                 if (result.Succeeded)
                 {
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("Index", "Dashboard");
                 }
                 else
                 {

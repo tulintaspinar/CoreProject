@@ -1,9 +1,11 @@
 using CoreProject.Areas.Writer.Models;
 using CoreProject.DataAccessLayer.Concrete;
 using CoreProject.EntityLayer.Concrete;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.Mvc.Authorization;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -29,6 +31,20 @@ namespace CoreProject
             services.AddDbContext<Context>();
             services.AddIdentity<AppUser,AppRole>().AddEntityFrameworkStores<Context>();
             services.AddControllersWithViews();
+
+            services.AddMvc(config =>
+            {
+                var policy = new AuthorizationPolicyBuilder()
+                            .RequireAuthenticatedUser()
+                            .Build();
+                config.Filters.Add(new AuthorizeFilter(policy));
+
+
+            });
+            services.ConfigureApplicationCookie(options =>
+            {
+                options.LoginPath = "/Writer/Login/Index";
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -55,7 +71,7 @@ namespace CoreProject
             {
                 endpoints.MapControllerRoute(
                     name: "areas",
-                     pattern: "{area:exists}/{controller=Default}/{action=Index}/{id?}" );
+                     pattern: "{area:exists}/{controller=Dashboard}/{action=Index}/{id?}" );
     
                 endpoints.MapControllerRoute(
                     name: "home",
