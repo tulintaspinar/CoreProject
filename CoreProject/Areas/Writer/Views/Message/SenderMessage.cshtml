@@ -1,0 +1,44 @@
+﻿@model List<WriterMessage>
+@{
+    ViewData["Title"] = "Sender Message";
+    Layout = "~/Views/Shared/_WriterLayout.cshtml";
+    int count = 0;
+}
+
+
+<div class="col-lg-12 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">GİDEN KUTUSU</h4>
+            <p class="card-description">
+            </p>
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>KONU</th>
+                            <th>ALICI</th>
+                            <th>TARİH</th>
+                            <th>DETAYLAR</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            count++;
+                            <tr>
+                                <th>@count</th>
+                                <td>@item.Subject</td>
+                                <td>@item.ReceiverName</td>
+                                <td>@(((DateTime)item.Date).ToString("dd-MMM-yyyy"))</td>
+                                <td><a href="/Writer/Message/SenderMessageDetails/@item.WriterMessageID" class="btn btn-primary">Mesajı Gör</a></td>
+                            </tr>
+                        }
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

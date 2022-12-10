@@ -4,6 +4,7 @@ using CoreProject.EntityLayer.Concrete;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -25,6 +26,11 @@ namespace CoreProject.BusinessLayer.Concrete
         public void Delete(Testimonial t)
         {
             _testimonialDal.Delete(t);
+        }
+
+        public List<Testimonial> GetByFilter()
+        {
+            throw new NotImplementedException();
         }
 
         public Testimonial GetById(int id)

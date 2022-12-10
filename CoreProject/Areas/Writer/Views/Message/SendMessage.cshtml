@@ -1,0 +1,27 @@
+﻿@model WriterMessage
+@{
+    ViewData["Title"] = "SendMessage";
+    Layout = "~/Views/Shared/_WriterLayout.cshtml";
+}
+<div class="col-lg-12 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <form method="post" class="form-control">
+                <br />
+                <label>ALICI</label>
+                <input type="text" asp-for="Receiver" class="form-control" />
+                <br />
+                <label>KONU</label>
+                <input type="text" asp-for="Subject" class="form-control" />
+                <br />
+                <br />
+                <label>MESAJ</label>
+                <textarea type="text" cols="3" rows="3" asp-for="Content" class="form-control"></textarea>
+                <br />
+                <button type="submit" class="btn btn-primary">GÖNDER</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+            

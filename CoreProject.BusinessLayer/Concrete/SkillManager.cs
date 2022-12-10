@@ -4,6 +4,7 @@ using CoreProject.EntityLayer.Concrete;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -24,6 +25,11 @@ namespace CoreProject.BusinessLayer.Concrete
         public void Delete(Skill t)
         {
             _skillDal.Delete(t);
+        }
+
+        public List<Skill> GetByFilter()
+        {
+            throw new NotImplementedException();
         }
 
         public Skill GetById(int id)

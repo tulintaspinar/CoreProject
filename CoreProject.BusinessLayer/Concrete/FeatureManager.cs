@@ -4,6 +4,7 @@ using CoreProject.EntityLayer.Concrete;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -25,6 +26,11 @@ namespace CoreProject.BusinessLayer.Concrete
         public void Delete(Feature t)
         {
             _featureDal.Delete(t);
+        }
+
+        public List<Feature> GetByFilter()
+        {
+            throw new NotImplementedException();
         }
 
         public Feature GetById(int id)

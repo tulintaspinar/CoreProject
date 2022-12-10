@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 namespace CoreProject.Areas.Writer.Controllers
 {
     [Area("Writer")]
+    [Route("Writer/[controller]/[action]")]
     [AllowAnonymous]
     public class LoginController : Controller
     {
@@ -39,6 +40,12 @@ namespace CoreProject.Areas.Writer.Controllers
                 }
             }
             return View();
+        }
+
+        public async Task<IActionResult> LogOut()
+        {
+            await _signInManager.SignOutAsync();
+            return RedirectToAction("Index");
         }
     }
 }

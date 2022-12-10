@@ -4,6 +4,7 @@ using CoreProject.EntityLayer.Concrete;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -25,6 +26,11 @@ namespace CoreProject.BusinessLayer.Concrete
         public void Delete(Service t)
         {
             _serviceDal.Delete(t);
+        }
+
+        public List<Service> GetByFilter()
+        {
+            throw new NotImplementedException();
         }
 
         public Service GetById(int id)

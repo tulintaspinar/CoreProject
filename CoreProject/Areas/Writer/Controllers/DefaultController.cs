@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace CoreProject.Areas.Writer.Controllers
 {
     [Area("Writer")]
-    [Authorize]
+    [Route("Writer/[controller]/[action]")]
     public class DefaultController : Controller
     {
         AnnouncementManager _announcementManager = new AnnouncementManager(new EfAnnouncementDal());

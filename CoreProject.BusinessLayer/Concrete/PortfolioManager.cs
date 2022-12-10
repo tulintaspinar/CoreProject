@@ -4,6 +4,7 @@ using CoreProject.EntityLayer.Concrete;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -25,6 +26,11 @@ namespace CoreProject.BusinessLayer.Concrete
         public void Delete(Portfolio t)
         {
             _portfolioDal.Delete(t);
+        }
+
+        public List<Portfolio> GetByFilter()
+        {
+            throw new NotImplementedException();
         }
 
         public Portfolio GetById(int id)

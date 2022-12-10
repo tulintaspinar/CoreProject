@@ -3,6 +3,7 @@ using CoreProject.DataAccessLayer.Concrete;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -16,6 +17,14 @@ namespace CoreProject.DataAccessLayer.Repository
             {
                 context.Remove(t);
                 context.SaveChanges();
+            }
+        }
+
+        public List<T> GetByFilter(Expression<Func<T, bool>> filter)
+        {
+            using (var context = new Context())
+            {
+                return context.Set<T>().Where(filter).ToList();
             }
         }
 

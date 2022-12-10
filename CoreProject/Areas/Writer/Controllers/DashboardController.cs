@@ -9,6 +9,7 @@ using System.Xml.Linq;
 namespace CoreProject.Areas.Writer.Controllers
 {
     [Area("Writer")]
+    [Route("Writer/[controller]/[action]")]
     public class DashboardController : Controller
     {
         private readonly UserManager<AppUser> _userManager;
@@ -31,7 +32,7 @@ namespace CoreProject.Areas.Writer.Controllers
             ViewBag.havaDurumu = document.Descendants("temperature").ElementAt(0).Attribute("value").Value;
             //statistics
             Context c = new Context();
-            ViewBag.GelenMesaj = 0;
+            ViewBag.GelenMesaj = c.WriterMessages.Where(x=>x.Receiver==user.Email).Count();
             ViewBag.DuyuruSayisi = c.Announcements.Count();
             ViewBag.ToplamKullanici = c.Users.Count();
             ViewBag.ToplamYetenek = c.Skills.Count();

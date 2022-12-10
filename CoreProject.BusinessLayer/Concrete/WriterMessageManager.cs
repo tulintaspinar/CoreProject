@@ -4,6 +4,7 @@ using CoreProject.EntityLayer.Concrete;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -28,6 +29,11 @@ namespace CoreProject.BusinessLayer.Concrete
             _writerMessageDal.Delete(t);
         }
 
+        public List<WriterMessage> GetByFilter()
+        {
+            throw new NotImplementedException();
+        }
+
         public WriterMessage GetById(int id)
         {
             return _writerMessageDal.GetById(id);
@@ -36,6 +42,16 @@ namespace CoreProject.BusinessLayer.Concrete
         public List<WriterMessage> GetList()
         {
             return _writerMessageDal.GetList();
+        }
+
+        public List<WriterMessage> GetListReceiverMessage(string p)
+        {
+            return _writerMessageDal.GetByFilter(x => x.Receiver == p);
+        }
+
+        public List<WriterMessage> GetListSenderMessage(string p)
+        {
+            return _writerMessageDal.GetByFilter(x => x.Sender == p);
         }
 
         public void Update(WriterMessage t)

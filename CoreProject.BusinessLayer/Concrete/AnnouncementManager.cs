@@ -4,6 +4,7 @@ using CoreProject.EntityLayer.Concrete;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -26,6 +27,11 @@ namespace CoreProject.BusinessLayer.Concrete
         public void Delete(Announcement t)
         {
             _announcementDal.Delete(t);
+        }
+
+        public List<Announcement> GetByFilter()
+        {
+            throw new NotImplementedException();
         }
 
         public Announcement GetById(int id)
