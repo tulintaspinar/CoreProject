@@ -1,0 +1,28 @@
+﻿@model WriterMessage
+@{
+    ViewData["Title"] = "DetailMessage";
+    Layout = "~/Views/Shared/_NewAdminLayout.cshtml";
+}
+<div class="col-12 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">İLETİŞİM DETAY PANELİ</h4>
+            <div class="form-group">
+                <label>TARİH</label>
+                <input type="text" class="form-control" asp-for="Date">
+            </div>
+            <div class="form-group">
+                <label>GÖNDEREN</label>
+                <input type="text" class="form-control" asp-for="SenderName">
+            </div>
+            <div class="form-group">
+                <label>KONU</label>
+                <input type="text" class="form-control" asp-for="Subject">
+            </div>
+            <div class="form-group">
+                <label>İÇERİK</label>
+                <textarea class="form-control" asp-for="Content" rows="4"></textarea>
+            </div>
+        </div>
+    </div>
+</div>

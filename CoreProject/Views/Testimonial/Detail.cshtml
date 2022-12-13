@@ -1,0 +1,28 @@
+﻿@model Testimonial
+@{
+    ViewData["Title"] = "Detail";
+    Layout = "~/Views/Shared/_NewAdminLayout.cshtml";
+}
+<div class="col-12 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">REFERANS DETAY PANELİ</h4>
+            <div class="form-group">
+                <label>AD SOYAD</label>
+                <input type="text" class="form-control" asp-for="ClientName">
+            </div>
+            <div class="form-group">
+                <label>ŞİRKET</label>
+                <input type="text" class="form-control" asp-for="Company">
+            </div>
+            <div class="form-group">
+                <label>ÜNVAN</label>
+                <input type="text" class="form-control" asp-for="Title">
+            </div>
+            <div class="form-group">
+                <label>YORUM</label>
+                <textarea class="form-control" asp-for="Comment" rows="4"></textarea>
+            </div>
+        </div>
+    </div>
+</div>

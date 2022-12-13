@@ -3,43 +3,44 @@
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_NewAdminLayout.cshtml";
 }
-<div class="card-header border-0">
-    <h3 class="mb-0">HAKKIMDA ALANI DÜZENLE</h3>
-</div>
-<div>
-    <br />
-    <form method="post">
-        @Html.HiddenFor(x=>x.AboutID)
-        <label>BAŞLIK</label>
-        <input type="text" asp-for="Title" class="form-control" />
-        @Html.ValidationMessageFor(x=>x.Title,"",new{@class="text-danger"})
-        <br />
 
-        <label>AÇIKLAMA</label>
-        <input type="text" asp-for="Description" class="form-control" />
-        <br />
+<div class="card">
+    <div class="card-body">
+        <p class="card-description">HAKKIMDA ALANI DÜZENLE</p>
+        <form class="form-group" method="post">
+            @Html.HiddenFor(x=>x.AboutID)
+            <label>BAŞLIK</label>
+            <input type="text" asp-for="Title" class="form-control" />
+            @Html.ValidationMessageFor(x=>x.Title,"",new{@class="text-danger"})
+            <br />
 
-        <label>YAŞ</label>
-        <input type="text" asp-for="Age" class="form-control" />
-        <br />
-        
-        <label>MAIL</label>
-        <input type="text" asp-for="Mail" class="form-control" />
-        @Html.ValidationMessageFor(x=>x.Mail,"",new{@class="text-danger"})
-        <br />
-        
-        <label>TELEFON</label>
-        <input type="text" asp-for="Phone" class="form-control" />
-        <br />
+            <label>AÇIKLAMA</label>
+            <input type="text" asp-for="Description" class="form-control" />
+            <br />
 
-        <label>ADRES</label>
-        <input type="text" asp-for="Adress" class="form-control" />
-        <br />
+            <label>YAŞ</label>
+            <input type="text" asp-for="Age" class="form-control" />
+            <br />
 
-        <label>RESİM</label>
-        <input type="file" asp-for="ImageUrl" class="form-control" />
-        <br />
+            <label>MAIL</label>
+            <input type="text" asp-for="Mail" class="form-control" />
+            @Html.ValidationMessageFor(x=>x.Mail,"",new{@class="text-danger"})
+            <br />
 
-        <button type="submit" class="btn btn-primary">GÜNCELLE</button>
-    </form>
+            <label>TELEFON</label>
+            <input type="text" asp-for="Phone" class="form-control" />
+            <br />
+
+            <label>ADRES</label>
+            <input type="text" asp-for="Adress" class="form-control" />
+            <br />
+
+            <label>RESİM</label>
+            <input type="file" asp-for="ImageUrl" class="form-control" />
+            <br />
+
+            <button type="submit" class="btn btn-primary">GÜNCELLE</button>
+        </form>
+    </div>
+    
 </div>

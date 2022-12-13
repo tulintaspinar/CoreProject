@@ -14,9 +14,6 @@ namespace CoreProject.Controllers
         [HttpGet]
         public IActionResult Index()
         {
-            ViewBag.d1 = "Düzenle";
-            ViewBag.d2 = "Öne Çıkanlar";
-            ViewBag.d3 = "Öne Çıkanlar Sayfası Düzenle";
             var values = _featureManager.GetList().FirstOrDefault();
             return View(values);
         }

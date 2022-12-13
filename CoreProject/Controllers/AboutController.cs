@@ -16,9 +16,6 @@ namespace CoreProject.Controllers
         [HttpGet]
         public IActionResult Index()
         {
-            ViewBag.d1 = "Düzenle";
-            ViewBag.d2 = "Hakkımda";
-            ViewBag.d3 = "Hakkımda Sayfası Düzenle";
             var values = _aboutManager.GetList().FirstOrDefault();
             return View(values);
         }

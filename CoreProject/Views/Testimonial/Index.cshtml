@@ -1,0 +1,45 @@
+﻿@model List<Testimonial>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_NewAdminLayout.cshtml";
+}
+<div class="row">
+    <div class="col-12 grid-margin">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">REFERANS LİSTESİ</h4>
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th> AD SOYAD </th>
+                                <th> ŞİRKET </th>
+                                <th> UNVAN </th>
+                                <th> SİL </th>
+                                <th> GÜNCELLE </th>
+                                <th> DETAYLAR </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>
+                                        <img src="@item.ImageUrl" alt="image" />
+                                    </td>
+                                    <td> @item.ClientName </td>
+                                    <td> @item.Company </td>
+                                    <td> @item.Title </td>
+                                    <td> <a href="/Testimonial/Delete/@item.TestimonialID" class="badge badge-outline-warning">SİL</a></td>
+                                    <td> <a href="/Testimonial/Update/@item.TestimonialID" class="badge badge-outline-success">GÜNCELLE</a></td>
+                                    <td> <a href="/Testimonial/Detail/@item.TestimonialID" class="badge badge-outline-info">DETAYLAR</a></td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

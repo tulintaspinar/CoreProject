@@ -1,0 +1,27 @@
+﻿@model WriterMessage
+@{
+    ViewData["Title"] = "AddMessage";
+    Layout = "~/Views/Shared/_NewAdminLayout.cshtml";
+}
+<div class="col-12 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">MESAJ GÖNDERME PANELİ</h4>
+            <form class="forms-sample" method="post">
+                <div class="form-group">
+                    <label>ALICI MAİL</label>
+                    <input type="text" asp-for="Receiver" class="form-control" />
+                </div>
+                <div class="form-gr oup">
+                    <label>BAŞLIK</label>
+                    <input type="text" asp-for="Subject" class="form-control" />
+                </div>
+                <div class="form-gr oup">
+                    <label>BAŞLIK</label>
+                    <textarea type="text" cols="3" rows="3" asp-for="Content" class="form-control"></textarea>
+                </div>
+                <button type="submit" class="btn btn-outline-primary mr-2">GÖNDER</button>
+            </form>
+        </div>
+    </div>
+</div>

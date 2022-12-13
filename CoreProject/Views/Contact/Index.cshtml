@@ -1,0 +1,45 @@
+﻿@model List<Message>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_NewAdminLayout.cshtml";
+    int count = 0;
+}
+
+<div class="col-lg-12 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">İLETİŞİM KUTUSU</h4>
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>GÖNDEREN</th>
+                            <th>MAİL</th>
+                            <th>TARİH</th>
+                            <th>SİL</th>
+                            <th>MESAJI AÇ</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            count++;
+                            <tr>
+                                <th>@count</th>
+                                <td class="budget">@item.Name</td>
+                                <td> @item.Mail</td>
+                                <td>@item.Date.ToShortDateString()</td>
+                                <td><a href="/Contact/DeleteContact/@item.MessageID" class="btn btn-outline-danger">SİL</a></td>
+                                <td><a href="/Contact/DetailContact/@item.MessageID" class="btn btn-outline-success">AÇ</a></td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+
+            </div>
+            <a href="/Contact/AddContact" class="btn btn-outline-primary">YENİ MESAJ OLUŞTUR</a>
+        </div>
+    </div>
+</div>
+

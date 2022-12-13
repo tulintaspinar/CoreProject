@@ -6,9 +6,6 @@ namespace CoreProject.Controllers
     {
         public IActionResult Index()
         {
-            ViewBag.d1 = "Dashboard";
-            ViewBag.d2 = "Dashboard";
-            ViewBag.d3 = "Anasayfa";
             return View();
         }
     }

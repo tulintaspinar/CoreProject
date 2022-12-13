@@ -1,0 +1,30 @@
+﻿@model SocialMedia
+@{
+    ViewData["Title"] = "UpdateSocialMedia";
+    Layout = "~/Views/Shared/_NewAdminLayout.cshtml";
+}
+<div class="col-12 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+
+            <h4 class="card-title">YENİ SOSYAL MEDYA EKLEME PANELİ</h4>
+
+            <form class="forms-sample" method="post">
+                <input type="hidden" asp-for="SocialMediaID" />
+                <div class="form-group">
+                    <label>ADI</label>
+                    <input type="text" class="form-control" asp-for="Name">
+                </div>
+                <div class="form-group">
+                    <label>URL</label>
+                    <input type="text" class="form-control" asp-for="Url">
+                </div>
+                <div class="form-group">
+                    <label>ICON</label>
+                    <input type="text" class="form-control" asp-for="Icon">
+                </div>
+                <button type="submit" class="btn btn-primary mr-2">GÜNCELLE</button>
+            </form>
+        </div>
+    </div>
+</div>

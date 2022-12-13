@@ -1,0 +1,33 @@
+﻿@model Contact
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_NewAdminLayout.cshtml";
+}
+<div class="card">
+    <div class="card-body">
+        <p class="card-description">ALT İLETİŞİM ALANI DÜZENLEME PANELİ</p>
+        <form class="form-group" method="post">
+            @Html.HiddenFor(x=>x.ContactID)
+            <label>BAŞLIK</label>
+            <input type="text" asp-for="Title" class="form-control" />
+            <br />
+
+
+
+            <label>MAIL</label>
+            <input type="text" asp-for="Mail" class="form-control" />
+            <br />
+
+            <label>TELEFON</label>
+            <input type="text" asp-for="Phone" class="form-control" />
+            <br />
+
+            <label>AÇIKLAMA</label>
+            <input type="text" asp-for="Description" class="form-control" />
+            <br />
+
+            <button type="submit" class="btn btn-primary">GÜNCELLE</button>
+        </form>
+    </div>
+
+</div>
