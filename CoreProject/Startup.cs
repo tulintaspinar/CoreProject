@@ -1,6 +1,7 @@
 using CoreProject.Areas.Writer.Models;
 using CoreProject.DataAccessLayer.Concrete;
 using CoreProject.EntityLayer.Concrete;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -35,16 +36,27 @@ namespace CoreProject
             services.AddMvc(config =>
             {
                 var policy = new AuthorizationPolicyBuilder()
-                            .RequireAuthenticatedUser()
+                            .RequireAuthenticatedUser() //sisteme authentication olmuþ kullanýcý gerekli
                             .Build();
                 config.Filters.Add(new AuthorizeFilter(policy));
-
-
             });
+
+            services.AddMvc();
+            //services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(x =>
+            //{
+            //    x.LoginPath = "/AdminLogin/Index";
+
+            //});
+
             services.ConfigureApplicationCookie(options =>
             {
+                options.Cookie.HttpOnly = true;
+                options.ExpireTimeSpan= TimeSpan.FromMinutes(20);
+                options.AccessDeniedPath = "/ErrorPage/Index";
                 options.LoginPath = "/Writer/Login/Index";
             });
+
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -63,6 +75,7 @@ namespace CoreProject
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseAuthentication();
+
             app.UseRouting();
 
             app.UseAuthorization();

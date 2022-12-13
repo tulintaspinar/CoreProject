@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace CoreProject.Controllers
 {
-    [AllowAnonymous]
+    [Authorize(Roles =("Moderator"))]
     public class ExperienceController : Controller
     {
         ExperienceManager _experienceManager = new ExperienceManager(new EfExperienceDal());

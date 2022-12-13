@@ -1,11 +1,13 @@
 ﻿using CoreProject.BusinessLayer.Concrete;
 using CoreProject.DataAccessLayer.EntityFramework;
 using CoreProject.EntityLayer.Concrete;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
 
 namespace CoreProject.Controllers
 {
+    [AllowAnonymous]
     public class HomeController : Controller
     {
         public IActionResult Index()
