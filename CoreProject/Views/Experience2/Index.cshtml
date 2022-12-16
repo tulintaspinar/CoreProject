@@ -1,0 +1,114 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_NewAdminLayout.cshtml";
+}
+
+<h4 class="text-center" id="">DENEYİM LİSTESİ  <button type="button" id="btnGetListAll" class="btn btn-outline-primary">Verileri Getir</button></h4>
+<div class="p-2" id="listExperience"></div>
+<br />
+
+<div class="col-md-12">
+    <h4>DENEYİM EKLEME</h4>
+    <input type="text" class="form-control" id="txtName" placeholder="ADI" />
+    <br />
+    <input type="text" class="form-control" id="txtDate" placeholder="TARİH" />
+    <br />
+    <br />
+    <button type="button" id="btnAddExperience" class="btn btn-outline-info">Deneyim Ekle</button>
+</div>
+<br />
+
+<div class="col-md-12">
+    <br />
+    <h4>ID'Ye Göre Listele'</h4>
+    <br />
+    <input type="text" class="form-control" id="txtID" placeholder="ID Giriniz" />
+    <button type="button" id="btnGetExperienceById" class="btn btn-outline-warning">Veriyi ID'ye Göre Getir</button>
+    <br />
+    <div id="getExperienceById"></div>
+</div>
+
+<div class="col-md-12">
+    <br />
+    <h4>ID'Ye Göre Silme</h4>
+    <br />
+    <input type="text" class="form-control" id="txtDeleteID" placeholder="ID Giriniz" />
+    <button type="button" id="btnDeleteExperience" class="btn btn-outline-danger">Veriyi ID'ye Sil</button>
+    <br />
+</div>
+
+
+@section Scripts{
+    <script>
+        $("#btnGetListAll").click(function () {
+            $.ajax({
+                contentType: "application/json",
+                dataType: "json",
+                type: "get",
+                url: "/Experience2/ListExperience/",
+                success: function (funk) {
+                    let values = jQuery.parseJSON(funk);
+                    console.log(values);
+                    let htmlString="<table class=table table-bordered> <tr> <th>ID</th> <th>BAŞLIK</th> <th>TARİH</th> </tr>";
+                    $.each(values,(index,value)=>{
+                        htmlString += `<tr> <td>${value.ExperinceID}</td> <td>${value.Name}</td> <td>${value.Date}</td> </tr>`;
+                    });
+
+                    htmlString += " </table>";
+
+                    $("#listExperience").html(htmlString);
+                }
+            });
+        });
+
+        $("#btnAddExperience").click(function(){
+            let values = {
+                Name: $("#txtName").val(),
+                Date: $("#txtDate").val()
+            };
+            $.ajax({
+                type:"post",
+                url: "/Experience2/AddExperience/",
+                data: values,
+                success:function(funk2){
+                    let result = jQuery.parseJSON(funk2);
+                    alert(result.Name+" başarıyla eklendi");
+                }
+            });
+        });
+
+        $("#btnGetExperienceById").click(x=>{
+            let id = $("#txtID").val();
+            $.ajax({
+                contentType:"application/json",
+                dataType:"json",
+                type:"get",
+                url: "/Experience2/GetById/"+id,
+                success:function(funk3){
+                    let result = jQuery.parseJSON(funk3);
+                    let htmlString = `<table class=table table-bordered> 
+                                        <tr> <th>ID</th><th>BAŞLIK</th><th>TARİH</th> </tr>
+                                        <tr> <td>${result.ExperinceID}</td> <td>${result.Name}</td> <td>${result.Date}</td> </tr>
+                                      </table>`;
+                    $("#getExperienceById").html(htmlString);
+                }
+            });
+        });
+
+        $("#btnDeleteExperience").click(x=>{
+            let id = $("#txtDeleteID").val();
+            $.ajax({
+                url: "/Experience2/DeleteExperience/"+id,
+                type:"post",
+                contentType:"application/json",
+                dataType:"json",
+                success:function(funk4){
+                    alert("Silindi");
+                }
+            });
+        });
+
+    </script>
+}
+<script src="~/lib/jquery/dist/jquery.js"></script>

@@ -1,0 +1,46 @@
+﻿@model List<AppUser>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_NewAdminLayout.cshtml";
+}
+<div class="col-md-6">
+    <div class="p-2">
+        <button type="button" id="btnGetListAll" class="btn btn-outline-primary">Verileri Getir</button>
+        <button type="button" id="btnAddUser" class="btn btn-outline-info">Kullanıcı Ekle</button>
+    </div>
+</div>
+
+<h4 class="text-center" id="">YAZAR LİSTESİ</h4>
+<div class="p-2" id="listUser"></div>
+<br />
+
+<div class="col-md-12">
+    <input type="text" class="form-control" id="txtName" placeholder="ADINIZ"/>
+    <br />
+    <input type="text" class="form-control" id="txtSurname" placeholder="SOYADINIZ"/>
+    <br />
+    <input type="text" class="form-control" id="txtUserName" placeholder="KULLANICI ADINIZ" />
+    <br />
+    <input type="text" class="form-control" id="txtMail" placeholder="MAİL ADRESİNİZ" />
+    <br />
+</div>
+@section Scripts{
+    <script>
+        $("#btnGetListAll").click(function() {
+            $.ajax({
+                contentType:"application/json",
+                dataType:"json",
+                type:"get",
+                url: "/WriterUser/ListUser/",
+                success:function(funk){
+                    let users = jQuery.parseJSON(funk);
+                    console.log(users);
+                }
+            });
+        });
+
+
+
+    </script>
+}
+<script src="~/lib/jquery/dist/jquery.js"></script>
