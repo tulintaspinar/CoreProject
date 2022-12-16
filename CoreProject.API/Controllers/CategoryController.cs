@@ -62,7 +62,7 @@ namespace CoreProject.API.Controllers
                 if (newCategory == null)
                     return NotFound();
                 newCategory.CategoryName= category.CategoryName;
-                context.Categories.Update(newCategory);
+                context.Categories.Update(newCategory); 
                 context.SaveChanges();
                 return Ok();
             }
